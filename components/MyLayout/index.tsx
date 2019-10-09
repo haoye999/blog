@@ -1,9 +1,15 @@
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
+import Header from './Header';
+import Aside from './aside';
 import '../../style/index.less';
+import './index.less';
 
-export default (props: { children: ReactElement }) => (
+export default (props: { children: ReactNode }) => (
   <div>
-    <h1>Haoye Blog</h1>
-    {props.children}
+    <Header />
+    <div className='layout'>
+      <Aside></Aside>
+      <main>{props.children}</main>
+    </div>
   </div>
 )

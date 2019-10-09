@@ -3,10 +3,11 @@ const next = require('next');
 const Router = require('koa-router');
 const { promisify } = require('util');
 const fs = require('fs');
+const path = require('path');
+const fmp = require('hexo-front-matter');
 const readFile = promisify(fs.readFile);
 const readdir = promisify(fs.readdir);
 const stat = promisify(fs.stat);
-const fmp = require('hexo-front-matter');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -23,19 +24,18 @@ app.prepare().then(() => {
   })
 
   router.get('/api/posts', async ctx => {
-    const posts = await readdir('./posts');
-    ctx.body = posts.map(post => post.replace('.md', ''));
+    const postNames = await readdir('./posts');
+    ctx.body = await Promise.all(postNames.map(async postName => await parsePost(postName)));
   })
 
   router.get('/api/post/:postName', async ctx => {
-    const fileName = `./posts/${decodeURIComponent(ctx.params.postName)}.md`;
-    const file = await readFile(fileName, 'utf-8');
-    const ParsedFileObject = fmp.parse(file);
-    const fileStat = await stat(fileName);
-    ctx.body = {
-      ...fileStat,
-      ...ParsedFileObject,
-    };
+    try {
+      const post = await parsePost(`${ctx.params.postName}.md`);
+      ctx.body = post;
+    } catch (e) {
+      ctx.body = e;
+      ctx.status = 500;
+    }
   })
 
   router.get('*', async ctx => {
@@ -48,3 +48,15 @@ app.prepare().then(() => {
     console.log(`> Ready on http://localhost:${port}`);
   })
 })
+
+async function parsePost(postName) {
+  const fileName = path.resolve(__dirname, 'posts', `${postName}`);
+  const file = await readFile(fileName, 'utf-8');
+  const ParsedFileObject = fmp.parse(file);
+  const fileStat = await stat(fileName);
+  return {
+    name: postName.replace('.md', ''),
+    ...fileStat,
+    ...ParsedFileObject,
+  };
+}

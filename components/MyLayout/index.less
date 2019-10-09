@@ -1,0 +1,42 @@
+.layout {
+  display: grid;
+  margin: 0 auto;
+  grid-template-areas: 'aside main';
+  grid-template-columns: 220px 1fr;
+  grid-column-gap: 45px;
+  max-width: 1200px;
+  margin-top: 30px;
+  aside {
+    grid-area: aside;
+  }
+  main {
+    grid-area: main;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: #1E1E1E;
+  box-shadow: 0 0 5px 3px gray;
+  .title {
+    font-family: 'Rock Salt';
+    font-size: 30px;
+    padding: 2px;
+    color: transparent;
+    background: linear-gradient(to right, #db6243 0%, green 30%, #fbdf93 50%, #ccc 75%, #db6243 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    animation: textcolor 5s infinite linear;
+  }
+}
+
+@keyframes textcolor {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}

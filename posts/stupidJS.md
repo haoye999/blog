@@ -1,12 +1,10 @@
 ---
 title: 坑人的JS
-subTitle: balabala
+description: 多个JS坑人案例, 讲述“你不知道”的JS
 avatar: /static/img/预览2.png
 tags:
 - JavaScript
 ---
-
-多个JS坑人案例
 
 [原文](http://javascript-puzzlers.herokuapp.com/)
 
@@ -103,6 +101,7 @@ JS 简直了，哈哈哈，为啥呢？？[参考](https://developer.mozilla.org
 ```
 
 传给parseInt的参数：
+
 Possible name |	Supplied value
 -|-
 match |	The matched substring. (Corresponds to $& above.)

@@ -1,6 +1,6 @@
 ---
 title: 网页中的文件---打开与上传
-subTitle: balabala
+description: 注意当对`XMLHttpRequest` 对象的 'onload' 属性添加`progress`事件后，现代浏览器将使用`OPTIONS`方法发起`HTTP`，而不是指定的方法，这可能会引起跨域问题，可将后端的`Access-Control-Allow-Methods` 加上`OPTIONS`来解决
 avatar: /static/img/预览1.png
 tags:
 - JavaScript
@@ -30,7 +30,7 @@ tags:
 
 一个例子[预览](./fileReader.html)
 
-![预览图](./img/预览1.png)
+![预览图](/static/img/预览1.png)
 
 ## HTML 骨架
 ```html
@@ -114,7 +114,7 @@ readFiles.addEventListener('change', function (ev) {
 
 # 文件上传
 
-![预览图](./img/预览2.png)
+![预览图](/static/img/预览2.png)
 
 文件上传步骤：
 

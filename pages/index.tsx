@@ -1,31 +1,19 @@
 import Link from 'next/link';
 import axios, { AxiosResponse } from 'axios';
 import { NextPage } from 'next';
-import { Post } from '../interfaces';
+import { Post, Posts } from '../interfaces';
 import Layout from '../components/MyLayout';
+import { fetchData } from '../util/request';
+import PostList from '../components/PostList'
 
-interface Posts {
-  posts: Array<string>;
-}
-
-const Index: NextPage<Posts> = (props) => {
-  const { posts } = props;
-  return (
-    <Layout>
-      <div>
-        {posts.map(post => (
-          <Link key={post} href="/post/[name]" as={`/post/${post}`}>
-            <a>{post}</a>
-          </Link>
-        ))}
-      </div>
-    </Layout>
-  );
-}
+const Index: NextPage<Posts> = (props) => (
+  <Layout>
+    <PostList posts={props.posts} />
+  </Layout>
+);
 
 Index.getInitialProps = async ctx => {
-  const res: AxiosResponse<Posts['posts']> = await axios(`http://localhost:3000/api/posts`);
-  console.log(res.data);
+  const res: AxiosResponse<Array<Post>> = await fetchData('/posts');
   return {
     posts: res.data,
   };
