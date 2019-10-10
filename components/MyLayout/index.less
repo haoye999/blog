@@ -1,3 +1,13 @@
+@import '../../style/variable.less';
+
+html {
+  background-color: @backgroundColor;
+}
+
+#container {
+  color: #ccc;
+}
+
 .layout {
   display: grid;
   margin: 0 auto;
@@ -5,7 +15,7 @@
   grid-template-columns: 220px 1fr;
   grid-column-gap: 45px;
   max-width: 1200px;
-  margin-top: 30px;
+  margin-top: 10px;
   aside {
     grid-area: aside;
   }
@@ -18,8 +28,6 @@
   display: flex;
   align-items: center;
   padding: 16px;
-  background: #1E1E1E;
-  box-shadow: 0 0 5px 3px gray;
   .title {
     font-family: 'Rock Salt';
     font-size: 30px;

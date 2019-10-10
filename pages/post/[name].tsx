@@ -14,8 +14,12 @@ const PostComponent: NextPage<Post> = props => {
     <Layout>
       <article>
         <h1 className='title'>{title}</h1>
-        <h2 className='description'>{description}</h2>
-        {/* <h3 className='publish-time'>发布于：{parseDate(birthtime)}</h3> */}
+        <h2 className='description'>
+          <ReactMarkdown
+            className='markdown'
+            source={description}
+          />
+        </h2>
         <span className='refresh-time'>更新于：{parseDate(mtime)}</span>
         <hr />
         <section>

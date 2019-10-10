@@ -1,6 +1,7 @@
 import { Post } from '../../interfaces';
 import { SFC } from 'react';
 import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
 import TagList from '../../components/TagList';
 import { parseDate, tag2Color, tag2BgColor } from '../../util';
 import './index.less';
@@ -12,7 +13,12 @@ const PostItem: SFC<{ post: Post }> = ({ post }) => {
       <li className="post-item-container">
         <div className="post-item-main">
           <h2 className="post-item-name">{title}</h2>
-          <section className="post-item-description">{description}</section>
+          <section className="post-item-description">
+            <ReactMarkdown
+              className='markdown'
+              source={description}
+            />
+          </section>
           <div className="post-item-tag-container">
             <TagList tags={tags.map(tag => ({
               value: tag,
@@ -20,7 +26,7 @@ const PostItem: SFC<{ post: Post }> = ({ post }) => {
               color: tag2Color[tag]
             }))} />
           </div>
-          <time className="post-item-time">{parseDate(mtime)}</time>
+          <time className="post-item-time">更新于：{parseDate(mtime)}</time>
         </div>
         <div style={{ backgroundImage: `url(${avatar})` }} className="post-item-avatar"></div>
       </li>

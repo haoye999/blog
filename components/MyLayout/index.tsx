@@ -5,7 +5,7 @@ import '../../style/index.less';
 import './index.less';
 
 export default (props: { children: ReactNode }) => (
-  <div>
+  <div id='container'>
     <Header />
     <div className='layout'>
       <Aside></Aside>
