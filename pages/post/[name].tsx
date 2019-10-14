@@ -4,7 +4,7 @@ import { NextPage } from 'next';
 import CodeBlock from '../../components/CodeBlock';
 import Layout from '../../components/MyLayout';
 import { Post } from '../../interfaces';
-import { parseDate } from '../../util';
+import { parseDate, host } from '../../util';
 import './index.less';
 
 const PostComponent: NextPage<Post> = props => {
@@ -38,7 +38,7 @@ const PostComponent: NextPage<Post> = props => {
 
 PostComponent.getInitialProps = async ctx => {
   const { name } = ctx.query;
-  const res: AxiosResponse<Post> = await axios(`http://localhost:3000/api/post/${name}`);
+  const res: AxiosResponse<Post> = await axios(`${host}/api/post/${name}`);
   return res.data;
 }
 
