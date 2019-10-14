@@ -1,6 +1,6 @@
 module.exports = {
   apps : [{
-    name: 'API',
+    name: 'haoye999-blog',
     script: 'server.js NODE_ENV=production',
     watch: true,
   }],
