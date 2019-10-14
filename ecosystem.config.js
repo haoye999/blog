@@ -1,7 +1,7 @@
 module.exports = {
   apps : [{
     name: 'haoye999-blog',
-    script: 'server.js NODE_ENV=production',
+    script: 'NODE_ENV=production node server.js',
     watch: true,
   }],
 };
