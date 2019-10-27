@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import ReactMarkdown from 'react-markdown';
 import { NextPage } from 'next';
+import Head from 'next/head';
 import CodeBlock from '../../components/CodeBlock';
 import Layout from '../../components/MyLayout';
 import { Post } from '../../interfaces';
@@ -11,28 +12,33 @@ const PostComponent: NextPage<Post> = props => {
   const { title, birthtime, mtime, _content, description } = props;
 
   return (
-    <Layout>
-      <article>
-        <h1 className='title'>{title}</h1>
-        <h2 className='description'>
-          <ReactMarkdown
-            className='markdown'
-            source={description}
-          />
-        </h2>
-        <span className='refresh-time'>更新于：{parseDate(mtime)}</span>
-        <hr />
-        <section>
-          <ReactMarkdown
-            className='markdown'
-            source={_content}
-            renderers={{
-              code: CodeBlock,
-            }}
-          />
-        </section>
-      </article>
-    </Layout>
+    <>
+      <Head>
+        <title>{title} | Haoye Blog</title>
+      </Head>
+      <Layout>
+        <article>
+          <h1 className='title'>{title}</h1>
+          <h2 className='description'>
+            <ReactMarkdown
+              className='markdown'
+              source={description}
+            />
+          </h2>
+          <span className='refresh-time'>更新于：{parseDate(mtime)}</span>
+          <hr />
+          <section>
+            <ReactMarkdown
+              className='markdown'
+              source={_content}
+              renderers={{
+                code: CodeBlock,
+              }}
+            />
+          </section>
+        </article>
+      </Layout>
+    </>
   );
 }
 

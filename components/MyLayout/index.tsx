@@ -1,15 +1,22 @@
-import { ReactNode } from 'react';
 import Header from './Header';
 import Aside from './aside';
 import '../../style/index.less';
 import './index.less';
 
-export default (props: { children: ReactNode }) => (
-  <div id='container'>
-    <Header />
-    <div className='layout'>
-      <Aside></Aside>
-      <main>{props.children}</main>
+interface PropsType {
+  children: JSX.Element;
+  aside?: JSX.Element;
+}
+
+export default (props: PropsType) => {
+  const { aside } = props;
+  return (
+    <div id='container'>
+      <Header />
+      <div className={`layout ${aside ? 'with-aside' : ''}`}>
+        <aside>{aside}</aside>
+        <main>{props.children}</main>
+      </div>
     </div>
-  </div>
-)
+  )
+}

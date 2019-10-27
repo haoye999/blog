@@ -8,7 +8,8 @@
       "util/*",
       "server.js",
       "next.config.js",
-      ".babelrc.js"
+      ".babelrc.js",
+      "hooks/*"
   ],
   "ext": "js jsx json less ts tsx"
 }

@@ -12,10 +12,15 @@ html {
   display: grid;
   margin: 0 auto;
   grid-template-areas: 'aside main';
-  grid-template-columns: 220px 1fr;
-  grid-column-gap: 45px;
-  max-width: 1200px;
+  grid-template-columns: 0 1fr;
+  grid-column-gap: 0;
+  max-width: 1000px;
   margin-top: 10px;
+  &.with-aside {
+    grid-template-columns: 220px 1fr;
+    grid-column-gap: 45px;
+    max-width: 1200px;
+  }
   aside {
     grid-area: aside;
   }
