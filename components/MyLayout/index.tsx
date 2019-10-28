@@ -1,5 +1,4 @@
 import Header from './Header';
-import Aside from './aside';
 import '../../style/index.less';
 import './index.less';
 
