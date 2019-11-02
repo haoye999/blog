@@ -1,4 +1,5 @@
 import Header from './Header';
+import Footer from './Footer';
 import '../../style/index.less';
 import './index.less';
 
@@ -16,6 +17,7 @@ export default (props: PropsType) => {
         <aside>{aside}</aside>
         <main>{props.children}</main>
       </div>
+      <Footer />
     </div>
   )
 }

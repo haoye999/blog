@@ -17,9 +17,21 @@ html {
   max-width: 1000px;
   margin-top: 10px;
   &.with-aside {
-    grid-template-columns: 220px 1fr;
-    grid-column-gap: 45px;
-    max-width: 1200px;
+    @media screen and (min-width: 900px) {
+      grid-template-columns: 220px 1fr;
+      grid-column-gap: 45px;
+      max-width: 1200px;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    padding: 0 2vw;
+    aside {
+      display: none;
+    }
+    main {
+      box-sizing: border-box;
+      width: 96vw;
+    }
   }
   aside {
     grid-area: aside;
@@ -43,6 +55,10 @@ html {
     -webkit-background-clip: text;
     animation: textcolor 5s infinite linear;
   }
+}
+
+.footer {
+  margin-top: 50px;
 }
 
 @keyframes textcolor {

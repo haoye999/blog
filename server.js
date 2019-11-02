@@ -25,7 +25,8 @@ app.prepare().then(() => {
 
   router.get('/api/posts', async ctx => {
     const postNames = await readdir('./posts');
-    ctx.body = await Promise.all(postNames.map(async postName => await parsePost(postName)));
+    const posts = await Promise.all(postNames.map(async postName => await parsePost(postName)));
+    ctx.body = posts.sort((a, b) => b.mtime - a.mtime);
   })
 
   router.get('/api/post/:postName', async ctx => {
