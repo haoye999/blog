@@ -1,7 +1,7 @@
 ---
 title: 迟来的秋招---网络与安全
 description: 秋招被坑了，新投递了几家，好好准备一下，加油！-----网络与安全篇
-avatar: /static/img/猿辅导.jpg
+avatar: /static/img/alibaba.png
 tags:
 - 秋招
 - 网络协议
