@@ -1,7 +1,7 @@
 ---
 title: 迟来的秋招---JS
-description: 秋招被美团坑了，新投递了几家，好好准备一下，加油！-----JS篇
-avatar: /static/img/bytedance.png
+description: 秋招被坑了，新投递了几家，好好准备一下，加油！-----JS篇
+avatar: /static/img/baidu.jpeg
 tags:
 - 秋招
 - JavaScript
@@ -247,3 +247,12 @@ cmd vs amd
 3. 主线程偶尔修复 worklist 和 标记 worklist。
 4. 一旦 worklist 为空，则主线程完成垃圾回收。
 5. 完成过程中，主线程与其他线程平行的 re-scan 一遍，可能发现更多的白色对象。
+
+## 13. Map, WeakMap, Set, WeakSet 区别
+
+区别：
+
+- WeakMap, WeakSet 不接受基础数据类型，只接受对象。
+- WeakMap 可以自动 GC
+- 没有 `keys()`、`values()` 等方法。
+

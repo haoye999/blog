@@ -1,6 +1,6 @@
 ---
 title: 迟来的秋招---面试准备
-description: 秋招被美团坑了，新投递了几家，好好准备一下，加油！-----index篇
+description: 秋招被坑了，新投递了几家，好好准备一下，加油！-----index篇
 avatar: /static/img/bytedance.png
 tags:
 - 秋招
@@ -34,9 +34,11 @@ tags:
 
 - [JS 基础](/post/js)
 
-- 浏览器相关
+- [浏览器相关](/post/browser)
 
-- 通信协议/网络安全
+- 通信协议/网络安全(/post/network)
+
+- 性能优化
 
 - 框架相关
   - Vue
