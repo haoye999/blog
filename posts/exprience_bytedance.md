@@ -76,9 +76,12 @@ print();
 ```
 
 9.  算法题：去掉字符串中的 `'b'` 和连续的 `'ac'`。例如：
-   1. 'abcbbdfb' => 'df'
-   2. 'aaabbccc' => ''
-   3. 'acbbssac' => 'ss'
+
+```js
+// 'abcbbdfb' => 'df'
+// 'aaabbccc' => ''
+// 'acbbssac' => 'ss'
+```
 
 其他的记不起来的。
 
