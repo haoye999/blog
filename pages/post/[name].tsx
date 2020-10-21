@@ -1,12 +1,12 @@
-import axios, { AxiosResponse } from "axios";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { NextPage } from "next";
 import Head from "next/head";
+import { AxiosResponse } from "axios";
 import CodeBlock from "../../components/CodeBlock";
 import Layout from "../../components/MyLayout";
 import { Post } from "../../interfaces";
-import { parseDate, host } from "../../util";
+import { parseDate, fetchData } from "../../util";
 import "./index.less";
 
 const PostComponent: NextPage<Post> = props => {
@@ -58,7 +58,7 @@ const PostComponent: NextPage<Post> = props => {
 
 PostComponent.getInitialProps = async ctx => {
   const { name } = ctx.query;
-  const res: AxiosResponse<Post> = await axios(`${host}/api/post/${name}`);
+  const res: AxiosResponse<Post> = await fetchData(`/post/${name}`);
   return res.data;
 };
 
