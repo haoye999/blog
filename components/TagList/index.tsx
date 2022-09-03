@@ -1,8 +1,8 @@
-import { SFC } from "react";
+import { FC } from "react";
 import { TagsType } from '../../interfaces';
 import Tag from '../Tag';
 
-const TagList: SFC<{ tags: TagsType }> = ({ tags }) => (
+const TagList: FC<{ tags: TagsType }> = ({ tags }) => (
   <ul className="tag-list">
     {tags.map(tag => (
       <Tag

@@ -1,17 +1,14 @@
-import React, { ReactNode } from 'react';
-import Highlight from 'react-highlight.js';
+import React, { ReactNode } from 'react'
+import Highlight from 'react-highlight.js'
 
 interface CodeBlockProps {
-  language: string;
-  value: ReactNode;
+  language: string
+  value: ReactNode
 }
 
-export default (props: CodeBlockProps) => {
-  const { language, value } = props;
+const CodeBlock = (props: CodeBlockProps) => {
+  const { language, value } = props
 
-  return (
-    <Highlight language={language}>
-      {value}
-    </Highlight>
-  );
+  return <Highlight language={language}>{value}</Highlight>
 }
+export default CodeBlock

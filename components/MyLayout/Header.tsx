@@ -1,10 +1,11 @@
 import Link from 'next/link';
+import styles from './MyLayout.module.scss'
 
 const Header = () => {
   return (
-    <header className='header'>
+    <header className={styles.header}>
       <Link href='/'>
-        <a><h1 className='title'>Haoye Blog</h1></a>
+        <a><h1 className={styles.title}>Haoye Blog</h1></a>
       </Link>
     </header>
   );

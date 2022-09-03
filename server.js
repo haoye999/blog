@@ -1,6 +1,6 @@
 const Koa = require('koa');
 const next = require('next');
-const Router = require('koa-router');
+const Router = require('@koa/router');
 const { promisify } = require('util');
 const fs = require('fs');
 const path = require('path');
@@ -39,7 +39,7 @@ app.prepare().then(() => {
     }
   })
 
-  router.get('*', async ctx => {
+  router.get('(.*)', async ctx => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
   })

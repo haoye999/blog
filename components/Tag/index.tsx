@@ -1,9 +1,9 @@
-import { SFC } from "react";
+import { FC } from "react";
 import { TagType } from '../../interfaces';
-import './index.less';
+import styles from './Tag.module.scss';
 
-const TagList: SFC<TagType> = ({ bgColor = 'black', color = 'white', value }) => {
-  return <span className="tag" style={{ backgroundColor: bgColor, color }}>{value}</span>;
+const TagList: FC<TagType> = ({ bgColor = 'black', color = 'white', value }) => {
+  return <span className={styles.tag} style={{ backgroundColor: bgColor, color }}>{value}</span>;
 }
 
 export default TagList;

@@ -1,14 +1,15 @@
-import { Posts } from '../../interfaces';
-import { SFC } from 'react';
-import PostItem from '../PostItem';
-import './index.less';
+import { Posts } from '../../interfaces'
+import { FC } from 'react'
+import PostItem from '../PostItem'
+import styles from './PostList.module.scss'
 
-const PostList: SFC<Posts> = props => {
-  // console.log(props);
+const PostList: FC<Posts> = (props) => {
   return (
-  <ul className="post-list-container">
-    {props.posts.length && props.posts.map(post => <PostItem key={post.name} post={post} />)}
-  </ul>
-)};
+    <ul className={styles['post-list-container']}>
+      {props.posts.length &&
+        props.posts.map((post) => <PostItem key={post.name} post={post} />)}
+    </ul>
+  )
+}
 
-export default PostList;
+export default PostList

@@ -1,13 +1,3 @@
-@import '../../style/variable.less';
-
-html {
-  background-color: @backgroundColor;
-}
-
-#container {
-  color: #ccc;
-}
-
 .layout {
   display: grid;
   margin: 0 auto;

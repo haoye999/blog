@@ -1,4 +1,4 @@
-@import './variable.less';
+@import './variable.scss';
 
 @font-face {
   font-family: octicons-link;
@@ -672,17 +672,17 @@
 }
 
 .markdown table tr {
-  background-color: @backgroundColor;
+  background-color: $backgroundColor;
   border-top: 1px solid #333;
 }
 
 .markdown table tr:nth-child(2n) {
-  background-color: @backgroundColor;
+  background-color: $backgroundColor;
 }
 
 .markdown img {
   border-radius: 10px;
-  background-color: @backgroundColor;
+  background-color: $backgroundColor;
   box-sizing: content-box;
   max-width: 100%;
 }
