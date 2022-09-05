@@ -1,16 +1,16 @@
-import { useState } from 'react'
+import {useState} from 'react'
 import ReactMarkdown from 'react-markdown'
-import { NextPage } from 'next'
+import {NextPage, GetServerSideProps} from 'next'
 import Head from 'next/head'
-import { AxiosResponse } from 'axios'
 import CodeBlock from '../../components/CodeBlock'
 import Layout from '../../components/MyLayout'
-import { Post } from '../../interfaces'
-import { parseDate, fetchData } from '../../util'
+import {Post} from '../../interfaces'
+import {parseDate} from '../../util'
 import styles from './Post.module.scss'
+import {getPostByName} from '../../util/post'
 
-const PostComponent: NextPage<Post> = (props) => {
-  const { title, birthtime, mtime, _content, description } = props
+const PostComponent: NextPage<Post> = props => {
+  const {title, birthtime, mtime, _content, description} = props
 
   const [showUpdate, setShowUpdate] = useState(true)
 
@@ -56,10 +56,25 @@ const PostComponent: NextPage<Post> = (props) => {
   )
 }
 
-PostComponent.getInitialProps = async (ctx) => {
-  const { name } = ctx.query
-  const res: AxiosResponse<Post> = await fetchData(`/post/${name}`)
-  return res.data
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const {name} = ctx.query as {name: string}
+  if (!name) {
+    return {
+      notFound: true,
+    }
+  }
+
+  const data: Post = await getPostByName(name)
+
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: data
+  }
 }
 
 export default PostComponent

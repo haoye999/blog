@@ -1,10 +1,11 @@
+import type React from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import styles from './MyLayout.module.scss'
 
 interface PropsType {
-  children: JSX.Element
-  aside?: JSX.Element
+  children: React.ReactNode
+  aside?: React.ReactNode
 }
 
 const MyLayout = (props: PropsType) => {
