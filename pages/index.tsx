@@ -1,6 +1,6 @@
 import {NextPage} from 'next'
 import Head from 'next/head'
-import {Post, Posts} from '../interfaces'
+import {Posts} from '../interfaces'
 import Layout from '../components/MyLayout'
 import PostList from '../components/PostList'
 import WhoAmI from '../components/WhoAmI'
@@ -17,8 +17,8 @@ const Index: NextPage<Posts> = props => (
   </>
 )
 
-export async function getServerSideProps() {
-  const posts: Post[] = await getAllPosts()
+export async function getStaticProps() {
+  const posts = await getAllPosts()
   return {props: {posts}}
 }
 

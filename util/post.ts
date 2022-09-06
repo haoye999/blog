@@ -2,6 +2,7 @@ import {promisify} from 'util'
 import path from 'path'
 import fs from 'fs'
 import fmp from 'hexo-front-matter'
+import {Post} from '../interfaces'
 
 const readdir = promisify(fs.readdir)
 const readFile = promisify(fs.readFile)
@@ -27,10 +28,10 @@ export async function getAllPosts() {
     postNames.map(async postName => await parsePost(postName))
   )
 
-  return normalizeJSON(posts.sort((a, b) => +b.mtime - +a.mtime))
+  return normalizeJSON(posts.sort((a, b) => +b.mtime - +a.mtime)) as Post[]
 }
 
 export async function getPostByName(name: string) {
   const postData = await parsePost(`${name}.md`)
-  return normalizeJSON(postData)
+  return normalizeJSON(postData) as Post
 }

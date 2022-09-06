@@ -1,13 +1,13 @@
 import {useState} from 'react'
 import ReactMarkdown from 'react-markdown'
-import {NextPage, GetServerSideProps} from 'next'
+import {NextPage, GetStaticProps, GetStaticPaths} from 'next'
 import Head from 'next/head'
 import CodeBlock from '../../components/CodeBlock'
 import Layout from '../../components/MyLayout'
 import {Post} from '../../interfaces'
 import {parseDate} from '../../util'
 import styles from './Post.module.scss'
-import {getPostByName} from '../../util/post'
+import {getAllPosts, getPostByName} from '../../util/post'
 
 const PostComponent: NextPage<Post> = props => {
   const {title, birthtime, mtime, _content, description} = props
@@ -56,8 +56,16 @@ const PostComponent: NextPage<Post> = props => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const {name} = ctx.query as {name: string}
+export const getStaticPaths: GetStaticPaths = async () => {
+  const allPosts = await getAllPosts()
+  return {
+    paths: allPosts.map(post => ({params: {name: post.name}})),
+    fallback: false,
+  }
+}
+
+export const getStaticProps: GetStaticProps<Post, {name: string}> = async ctx => {
+  const name = ctx.params?.name
   if (!name) {
     return {
       notFound: true,
@@ -73,7 +81,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 
   return {
-    props: data
+    props: data,
   }
 }
 
