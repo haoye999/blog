@@ -3,6 +3,7 @@ import path from 'path'
 import fs from 'fs'
 import fmp from 'hexo-front-matter'
 import {Post} from '../interfaces'
+import { pick } from 'lodash'
 
 const readdir = promisify(fs.readdir)
 const readFile = promisify(fs.readFile)
@@ -17,7 +18,7 @@ async function parsePost(postName: string) {
   const fileStat = await stat(fileName)
   return {
     name: postName.replace('.md', ''),
-    ...fileStat,
+    ...pick(fileStat, ['mtime', 'ctime', 'birthtime']),
     ...ParsedFileObject,
   }
 }
