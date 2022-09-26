@@ -9,7 +9,7 @@ import styles from './PostItem.module.scss'
 const PostItem: FC<{ post: Post }> = ({ post }) => {
   const { birthtime, name, title, avatar, mtime, description, tags = [] } = post
   return (
-    <Link key={birthtime} href="/post/[name]" as={`/post/${name}`}>
+    <Link key={birthtime} href={`/post/${name}`}>
       <li className={styles['post-item-container']}>
         <div className={styles["post-item-main"]}>
           <h2 className={styles["post-item-name"]}>{title}</h2>
